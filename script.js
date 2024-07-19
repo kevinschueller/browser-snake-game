@@ -26,7 +26,7 @@ function update() {
     // Check for wall collision
     if (head.x < 0 || head.x >= canvas.width / 20 || head.y < 0 || head.y >= canvas.height / 20) {
         document.getElementById('gameOver').style.display = 'block'; // Show game over message
-        // document.location.reload(); // Reload the game (removed)
+        document.getElementById('restartButton').style.display = 'block'; // Show restart button
         clearInterval(gameLoop); // Stop the game loop
     }
     
@@ -59,6 +59,18 @@ function changeDirection(event) {
 }
 
 document.addEventListener('keydown', changeDirection);
+
+function resetGame() {
+    snake = [{ x: 10, y: 10 }];
+    direction = { x: 0, y: 0 };
+    food = { x: 15, y: 15 };
+    score = 0;
+    document.getElementById('gameOver').style.display = 'none'; // Hide game over message
+    document.getElementById('restartButton').style.display = 'none'; // Hide restart button
+    gameLoop(); // Start the game loop
+}
+
+document.getElementById('restartButton').addEventListener('click', resetGame);
 
 function gameLoop() {
     draw();
