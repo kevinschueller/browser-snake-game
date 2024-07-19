@@ -26,7 +26,7 @@ function update() {
     // Check for wall collision
     if (head.x < 0 || head.x >= canvas.width / 20 || head.y < 0 || head.y >= canvas.height / 20) {
         document.getElementById('gameOver').style.display = 'block'; // Show game over message
-        document.location.reload(); // Reload the game
+        // document.location.reload(); // Reload the game (removed)
         clearInterval(gameLoop); // Stop the game loop
     }
     
