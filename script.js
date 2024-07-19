@@ -25,9 +25,7 @@ function update() {
     
     // Check for wall collision
     if (head.x < 0 || head.x >= canvas.width / 20 || head.y < 0 || head.y >= canvas.height / 20) {
-        alert("Game Over! You hit the wall."); // Show alert message
-        location.reload(); // Reload the page
-        clearInterval(gameLoop); // Stop the game loop
+        gameOver(); // Call the game over function
     }
     
     // Check for food collision
@@ -65,12 +63,13 @@ function resetGame() {
     direction = { x: 0, y: 0 };
     food = { x: 15, y: 15 };
     score = 0;
-    document.getElementById('gameOver').style.display = 'none'; // Hide game over message
-    document.getElementById('restartButton').style.display = 'none'; // Hide restart button
     gameLoop(); // Start the game loop
 }
 
-document.getElementById('restartButton').addEventListener('click', resetGame);
+function gameOver() {
+    alert("Game Over! You hit the wall."); // Show alert message
+    location.reload(); // Reload the page
+}
 
 function gameLoop() {
     draw();
