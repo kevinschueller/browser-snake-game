@@ -23,6 +23,13 @@ function draw() {
 function update() {
     const head = { x: snake[0].x + direction.x, y: snake[0].y + direction.y };
     
+    // Check for wall collision
+    if (head.x < 0 || head.x >= canvas.width / 20 || head.y < 0 || head.y >= canvas.height / 20) {
+        alert("Game Over! You hit the wall.");
+        document.location.reload(); // Reload the game
+        clearInterval(gameLoop); // Stop the game loop
+    }
+    
     // Check for food collision
     if (head.x === food.x && head.y === food.y) {
         score++;
